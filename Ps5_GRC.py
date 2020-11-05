@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+import sys
+
+#Questão 1
+#Criando um dicionário com minhas coisas favoritas:
+fav_things = {'book': 'Ano um', 'song': 'Some nights', 'tree': 'Farinha-seca'}
+
+#Questão 2
+#Print do meu livro favorito
+print(fav_things['book'])
+
+#Questão3
+#Print do meu livro favorito a partir da variável fav_t
+fav_t = 'book'
+print(fav_things[fav_t])
+
+#Questão 4
+#Print da minha árvore favorita
+print(fav_things['tree'])
+
+#Questão 5
+#Adicionando 'organism' no dicionário
+fav_things['organism'] = 'bird'
+#Colocando 'organism' como o novo valor na variável fav_t
+fav_t = 'organism'
+print(fav_things[fav_t])
+
+#Questão 6
+fav_t = sys.argv[1] #O valor dado na linha de comando entra na variável fav_t
+
+if fav_t in fav_things: #Verificando se o valor fornecido é uma das keys presente no dicionário
+        print(fav_things[fav_t]) #Caso esteja, o valor é apresentado 
+else:
+        print(fav_t, 'não encontrado. As keys disponíveis são:') #Caso a key não seja encontrada no dicionário é apresentado as keys disponíveis
+        for key in fav_things:
+                print(key)
+
+#Questão 7
+#Mudando o valor da key 'organism'
+fav_things['organism'] = 'cat'
+print(fav_things['organism'])
+
+#Questão 8 
+#A fav_t já foi definida no exercício 6
+new_thing = sys.argv[2] 
+
+if fav_t in fav_things: #Caso o input fornecido é uma das keys do dicionário o valor dessa key é alterado 
+        fav_things[fav_t] = new_thing #O novo valor da key de fav_t é a new_thing
+        print(fav_things)
+else: #Caso o input fornecido não seja encontrado é apresentado as possibilidades disponíveis
+        print(fav_t, 'não encontrado. As keys disponíveis são:')
+        for key in fav_things:
+                print(key)
+
+#Questão 9
+for fav in sorted(fav_things): #Usado a função sorted para retornar uma lista com as key e seus respectivos valores
+    print(fav,':', fav_things[fav]) #Separendo a key do valor por (:)
+
+#Questão 10
+mySet = set('ATGTGGG')
+mySet2 = {'ATGCCT'}
+print(mySet)
+print(mySet2)
+
+#Questão 11
+Set_A = {3, 14, 15, 9, 26, 5, 35, 9}
+Set_B = {60, 22, 14, 0, 9}
+
+#Encontrando a intersecção dos sets
+inter = Set_A & Set_B 
+print('A intersecção é', inter)
+
+#Encontrando a diferença dos sets
+dif1 = Set_A - Set_B
+print('A diferença do Set A para o Set B é', dif1)
+dif2 = Set_B - Set_A
+print('A diferença do Set B para o Set A é', dif2)
+
+#Encontrando a união dos sets
+union = Set_A | Set_B
+print('A união dos sets é', union)
+
+#Encontrando a diferença simétrica
+sim = Set_A ^ Set_B
+print('A diferença simétrica dos sets é', sim)
+
+#Questão 12
+DNA = set('GATGGGATTGGGGTTTTCCCCTCCCATGTGCTCAAGACTGGCGCTAAAAGTTTTGAGCTTCTCAAAAGTCTAGAGCCACCGTCCAGGGAGCAGGTAGCTGCTGGGCTCCGGGGACACTTTGCGTTCGGGCTGGGAGCGTGCTTTCCACGACGGTGACACGCTTCCCTGGATTGGCAGCCAGACTGCCTTCCGGGTCACTGCCATGGAGGAGCCGCAGTCAGATCCTAGCGTCGAGCCCCCTCTGAGTCAGGAAACATTTTCAGACCTATGGAAACTACTTCCTGAAAACAACGTTCTGTCCCCCTTGCCGTCCCAAGCAATGGATGATTTGATGCTGTCCCCGGACGATATTGAACAATGGTTCACTGAAGACCCAGGTCCAGATGAAGCTCCCAGAATTCGCCAGAGGCTGCTCCCCCCGTGGCCCCTGCACCAGCAGCTCCTACACCGGCGGCCCCTGCACCAGCCCCCTCCTGGCCCCTGTCATCTTCTGTCCCTTCCCAGAAAACCTACCAGGGCAGCTACGGTTTCCGTCTGGGCTTCTTGCATTCTGGGACAGCCAAGTCTGTGACTTGCACGTACTCCCCTGCCCTCAACAAGATGTTTTGCCAACTGGCCAAGACCTGCCCTGTGCAGCTGTGGGTTGATTCCACACCCCCGCCCGGCACCCGCGTCCGCGCCATGGCCATCTACAAGCAGTCACAGCACATGACGGAGGTTGTGAGGCGCTGCCCCCACCATGAGCGCTGCTCAGATAGCGATGGTCTGGCCCCTCCTCAGCATCTTATCCGAGTGGAAGGAAATTTGCGTGTGGAGTATTTGGATGACAGAAACACTTTTCGTGGGGTTTTCCCCTCCCATGTGCTCAAGACTGGCGCTAAAAGTTTTGAGCTTCTCAAAAGTCTAGAGCCACCGTCCAGGGAGCAGGTAGCTGCTGGGCTCCGGGGACACTTTGCGTTCGGGCTGGGAGCGTGCTTTCCACGACGGTGACACGCTTCCCTGGATTGGCAGCCAGACTGCCTTCCGGGTCACTGCCATGGAGGAGCCGCAGTCAGATCCTAGCGTCGAGCCCCCTCTGAGTCAGGAAACATTTTCAGACCTATGGAAACTACTTCCTGAAAACAACGTTCTGTCCCCCTTGCCGTCCCAAGCAATGGATGATTTGATGCTGTCCCCGGACGATATTGAACAATGGTTCACTGAAGACCCAGGTCCAGATGAAGCTCCCAGAATTCGCCAGAGGCTGCTCCCCCCGTGGCCCCTGCACCAGCAGCTCCTACACCGGCGGCCCCTGCACCAGCCCCCTCCTGGCCCCTGTCATCTTCTGTCCCTTCCCAGAAAACCTACCAGGGCAGCTACGGTTTCCGTCTGGGCTTCTTGCATTCTGGGACAGCCAAGTCTGTGACTTGCACGTACTCCCCTGCCCTCAACAAGATGTTTTGCCAACTGGCCAAGACCTGCCCTGTGCAGCTGTGGGTTGATTCCACACCCCCGCCCGGCACCCGCGTCCGCGCCATGGCCATCTACAAGCAGTCACAGCACATGACGGAGGTTGTGAGGCGCTGCCCCCACCATGAGCGCTGCTCAGATAGCGATGGTCTGGCCCCTCCTCAGCATCTTATCCGAGTGGAAGGAAATTTGCGTGTGGAGTATTTGGATGAC')
+print(DNA)
+
+#Questão 13
+dna = 'GAACTCCAAAAATGAAAACATAGTAGCAATCAAAGCATCCCACTATTTTTTGTCTCTCGTTTCATTAGCGTTGTAAATTACTGATACCCTACTATACCTCTACAAGGCCTTTGTCATCTTTTTACTCAAGTGTGAAATCATCACTTATTGTATGAAGGATGAGCTTTCCGTTCGCTAGTTTGCTGAAAAGGCCTTCTGCAATAAGCTCTCTATTATCTTTAAAAAAACCTGGTTCCTGGTCTTCCATTCTGCTAAAAGCTGTAGGGGTTTTATCACGAGATTCCCGTTGGCATTCTGACTTATTAAAAATGCTTACAGAAGAAATGGATTCTTTAAATGGTCAAATTAATACGTGGACAGATAATAATCCTTTATTAGATGAAATTACGAAGCCATACAGAAAATCTTCAACTCGTTTTTTTCATCCGCTTCTTGTACTTCTAATGTCTAGAGCATCAGTAAATGGGGATCCACCGAGTCAGCAACTATTTCAAAGGTACAAACAACTTGCCCGTGTAACAGAATTGATTCATGCTGCCAATATAATTCATATTAATATTGGAGAAGAACAAAGCAACGAACAGATTAAACTTGCAACGTTGGTTGGAGATTATTTACTCGGAAAGGCGTCTGTTGATTTAGCACATTTAGAAAACAACGCTATTACAGAAATTATGGCTTCTGTTATTGCAAACTTAGTTGAAGGGCACTTCGGAAGCCGACAAAATGGCTCTGTTGGTTTGTCAAACGAACGAACCATCCTTCTGCAATCAGCCTTTATGCCAGCAAAGGCATGTTTATGCGCAAGCATATTGAATAACTCATCACAATACATTAATGATGCGTGTTTCAATTATGGAAAATTTCTAGGCTTATCGCTGCAACTGGCCCATAAGCCTGTATCTCCTGACGCCCAAGTTTTGCAAAAGAATAATGACATTTTGAAAACATATGTTGAGAATGCCAAGAGCTCATTGTCTGTTTTCCCCGATATAGAGGCTAAGCAAGCTCTCATGGAAATCGCTAATAGTGTTTCGAAGTAATCGACAGGTATTGTATCCTGGATTAATATTAGGGTGGCTCATGCATGCTCGTGCAATCGTAACAAATATGTCTTTCTTTTACGAATTTTAACGCTTCAATATAAATCATATTTTTCCTCA'
+unique = set(dna)#Determinando os caraceres unicos na sequência
+print('Nucleotídeos: ', unique)
+
+#Determinando a quantidade de cada caractere
+n_quant = {} 
+for nucleotideo in unique:
+    count = dna.count(nucleotideo) 
+    n_quant[nucleotideo] = count #Criando um dicionário com cada nucleotideo e a quantidade 
+
+print('Quantidade de nucleotídeos:', n_quant)
+
+#Calculando a proporção de CG na sequência
+prop_CG = (n_quant['C'] + n_quant['G']) / len(dna)
+print('A realação CG é', prop_CG)
+
