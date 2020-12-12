@@ -6,8 +6,7 @@
 import sys
 
 File = sys.argv[1]
-lenght = sys.argv[2]
-
+lenght = int(sys.argv[2])
 
 fastaDict={}
 seqName=''
@@ -19,17 +18,14 @@ with open(File,"r") as file_object:
             seqName=line.split(' ')[0]
             seqName=seqName.replace('>','')
             newData=''
-#            print(seqName)
         else:
-#            print(line)
             newData += line
             fastaDict[seqName] = newData
 
-#print(fastaDict)
-
+Id = fastaDict.keys()
+Id_str = [str(i) for i in Id]
 seq = fastaDict.values() #Lista apenas com as sequencias de DNA
 seq_str = [str(i) for i in seq] #Transformando as sequências em string
-#print(seq_str[0])
 
 dna = 'TAGTAGCTAGTCGAATCGCCGATGATGCTATCGACTACGATCGATGCATGCATGCATGCATGCATGCATCGATGCATGCATGCATGCATGCATCGATCGATCGATGCATGCATGCATGCATGCATCGATGCATGCATCGCCGCGGCATATATATACTGGGCGCTAATTA'
 
@@ -41,15 +37,15 @@ def dna_split(dna, lenght):
         return dna3
 
 
-print(dna_split(seq_str[0], 80))
+#print(dna_split(seq_str[0], 80))
 
 value = 0
 seq_edit = []
 for i in seq_str:
 	edit = seq_str[value]
 	value += 1
-	split = dna_split(edit, lenght)
-#	seq_edit.append(split)
+	split = [dna_split(edit, lenght)]
+	seq_edit.append(split)
 
-print(split)
+print(seq_edit)
 
